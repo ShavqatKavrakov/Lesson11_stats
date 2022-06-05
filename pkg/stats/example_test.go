@@ -3,19 +3,22 @@ package stats
 import (
 	"fmt"
 
-	"github.com/ShavqatKavrakov/Lesson11_bank/pkg/types"
+	"github.com/ShavqatKavrakov/Lesson11_bank/v2/pkg/types"
 )
 
 func ExampleAvg() {
 	fmt.Println(Avg([]types.Payment{
 		{
 			Amount: 1_000_00,
+			Status: "Fail",
 		},
 		{
 			Amount: 2_000_00,
+			Status: "Ok",
 		},
 		{
 			Amount: 12_000_00,
+			Status: "INPROGRASS",
 		},
 	}))
 
