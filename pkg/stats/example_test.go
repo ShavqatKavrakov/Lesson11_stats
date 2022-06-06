@@ -23,7 +23,7 @@ func ExampleAvg() {
 	}))
 
 	//Output:
-	//500000
+	//466666
 }
 func ExampleTotalInCategory() {
 	fmt.Println(TotalInCategory([]types.Payment{
