@@ -26,3 +26,28 @@ func TotalInCategory(payments []types.Payment, category types.Category) (sum typ
 	}
 	return sum
 }
+
+//AvgInCategory находит среднюю сумму покупок в определённой категории.
+func AvgInCategory(payments []types.Payment, category types.Category) (sum types.Money) {
+	length := 0
+	for _, payment := range payments {
+		if category != payment.Category {
+			continue
+		}
+		sum += payment.Amount
+		length++
+	}
+	return sum / types.Money(length)
+}
+
+//CategoriesAvg считает среднюю сумму платёж по каждой категориии
+func CategoriesAvg(payments []types.Payment) map[types.Category]types.Money {
+	categoriesAvg := map[types.Category]types.Money{}
+	for _, payment := range payments {
+		categoriesAvg[payment.Category] += payment.Amount
+	}
+	for key := range categoriesAvg {
+		categoriesAvg[key] = AvgInCategory(payments, key)
+	}
+	return categoriesAvg
+}
